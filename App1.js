@@ -7,7 +7,6 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import notifee from '@notifee/react-native';
 
 import {
   SafeAreaView,
@@ -18,7 +17,6 @@ import {
   useColorScheme,
   View,
   NativeModules,
-  DeviceEventEmitter,
   AppRegistry,
 } from 'react-native';
 
@@ -30,35 +28,35 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const {CalendarModule} = NativeModules;
+// const {CalendarModule} = NativeModules;
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
 
 const App = () => {
   const [headless, setHeadless] = useState(false);
   const isDarkMode = useColorScheme() === 'dark';
-  CalendarModule.createCalendarEvent('university', 'near Tenny', (err, res) => {
-    if (err) {
-      console.log(res);
-      console.error(err);
-    } else {
-      console.log(res);
-    }
-  });
-  const broadcastReceiver = async data => {
-    console.log('data is receiver', data);
-  };
+  // CalendarModule.createCalendarEvent('university', 'near Tenny', (err, res) => {
+  //   if (err) {
+  //     console.log(res);
+  //     console.error(err);
+  //   } else {
+  //     console.log(res);
+  //   }
+  // });
+  // const broadcastReceiver = async data => {
+  //   console.log('data is receiver', data);
+  // };
   useEffect(() => {
     // DeviceEventEmitter.addListener('eventA', response => {
     //   console.log('event response', response);
     // });
-    if (!headless) {
-      setHeadless(true);
-      AppRegistry.registerHeadlessTask(
-        'broadcastEvent',
-        () => broadcastReceiver,
-      );
-    }
+    // if (!headless) {
+    //   setHeadless(true);
+    //   AppRegistry.registerHeadlessTask(
+    //     'broadcastEvent',
+    //     () => broadcastReceiver,
+    //   );
+    // }
   }, []);
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
